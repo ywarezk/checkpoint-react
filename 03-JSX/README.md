@@ -1,17 +1,15 @@
-## JSX
+## React Introduction
 
-We are using JSX to create our component dom tags.
-In this lesson we will cover the common things we can do with JSX
+Our goal in this lesson is to understand what react is used for
 
 ### Lesson Plan
 
-- Placing js expression in JSX
-- style
-- className
-- events
-- Creating a new tag
-- stateless component
-- passing props
-- if
-- for
-- self invoked function 
+- What react is used for
+- React.createElement
+- ReactDOM
+- VirtualDOM
+- React Components
+- JSX
+- Babel
+- What is React Component
+- React Architecture
