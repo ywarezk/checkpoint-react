@@ -50,7 +50,35 @@ export default class FormWrap extends React.Component {
 
 }
 
-export function withFormWrap(props) {
-    const render = props.render;
-    return render();
+export function withFormWrap(initialValues) {
+    return function(ChildComponent) {
+        return class ChildWrapped extends React.Component {
+            static displayName = 'CPFormWrap';
+        
+            static propTypes = {
+                initialValues: PropTypes.object.isRequired,
+            }
+    
+            constructor(props) {
+                super(props);
+    
+                // init the state with the initialValues from prop
+                this.state = {};
+                for (let key in initialValues) {
+                    this.state[key] = initialValues[key];
+                }
+            }
+    
+            handleUpdate = (event) => {
+                const value = event.target.value;
+                this.setState({
+                    [event.target.name]: value
+                })
+            }
+    
+            render() {
+                return <ChildComponent values={this.state} onChange={this.handleUpdate}  />
+            }
+        }
+    }
 }

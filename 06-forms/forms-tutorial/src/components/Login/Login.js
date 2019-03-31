@@ -3,9 +3,9 @@
  */
 
 import React from 'react';
-import FormWrap from '../FormWrap/FormWrap';
+import FormWrap, {withFormWrap} from '../FormWrap/FormWrap';
 
-export default class Login extends React.Component {
+class Login extends React.Component {
     static displayName = 'CPLogin';
     // state = {
     //     email: 'yariv@nerdeez.com',
@@ -79,3 +79,21 @@ export default class Login extends React.Component {
         )
     }
 }
+
+function HOCLogin(props) {
+    return (
+        <form noValidate>
+            <input
+                name="email"
+                onChange={props.onChange} 
+                value={props.values.email} type="email" />
+            <input 
+                name="password"
+                onChange={props.onChange}
+                value={props.values.password} type="password" required /> <br/>
+            <button type="submit">Submit</button>
+        </form>
+    );
+}
+
+export default withFormWrap({email: 'yariv', password: ''})(HOCLogin);
