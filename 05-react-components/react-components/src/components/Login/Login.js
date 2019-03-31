@@ -6,8 +6,13 @@
 
  import React from 'react';
 
-export default class Login extends React.Component {
+export default class Login extends React.PureComponent {
+    static propTypes = {
+        
+    }
+
     state = {
+        childObj: {},
         email: '',
         stamNumber: 10
     }
@@ -25,8 +30,37 @@ export default class Login extends React.Component {
     }
 
     componentDidMount() {
-        
+        this.intervalId = setInterval(function() {
+            console.log('timer');
+        }, 1000)
     }
+
+    /**
+     * 
+     * @param {*} nextProps 
+     * @param {*} nextState 
+     * @returns {boolean}
+     */
+    shouldComponentUpdate(nextProps, nextState) {
+        // this.props // prev props
+        // this.state // prev state
+        // this.setState // Error!
+        return true;
+    }
+
+    /**
+     * component is updates
+     * after the render
+     * and after dom update
+     */
+    componentDidUpdate() {
+        // we can call this.setState but we have to be careful
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
+    }
+
 
     handleSubmit = (event) => {
         event.preventDefault();
