@@ -8,4 +8,4 @@
 - clicking an item from the todo list will bring us to the todo item page /todo/:id
   * the server can get a request for a single item https://nztodo.herokuapp.com/api/task/:id/?format=json
 - There is also a page with a form to add a new task which you can get to from a navigation bar
-- From the todo item page you can go to an update page where you can update a single todo item
+- The todo item page contain a form like the new task with the items filled with the item details, there is also an update button on that page to update with new values
